@@ -1,0 +1,47 @@
+<div class="card container mt-5" style="width: 30rem;">
+  <div class="card-body">
+    <form [formGroup]="userData" class="container">
+
+      <div class="mb-3">
+        <label for="fullname" class="form-label">username</label>
+        <input type="name" class="form-control" id="fullname" placeholder="your own user name"
+        formControlName="username">
+        <span style="color: red;" *ngIf="userData.get('username')?.dirty && !userData.get('username')?.valid" >username should contain atleast 8 letters</span>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="age" class="form-label">age</label>
+        <input type="number" class="form-control" id="age" placeholder="your age"
+        formControlName="age">
+        <span style="color: red;" *ngIf="userData.get('age')?.dirty && !userData.get('age')?.valid" >enter in correct format</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="mobile" class="form-label">mobile</label>
+        <input type="numb" class="form-control" id="mobile" placeholder="your mobile number"
+        formControlName="mobile">
+        <span style="color: red;" *ngIf="userData.get('mobile')?.dirty && !userData.get('mobile')?.valid" >enter in correct format</span>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="enter your email address"
+          aria-describedby="emailHelp" formControlName="email">
+          <span style="color: red;" *ngIf="userData.get('email')?.dirty && !userData.get('email')?.valid" >enter in correct format</span>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1"
+          placeholder="Password must contain atleast 8 characters" formControlName="password">
+          <span style="color: red;" *ngIf="userData.get('password')?.dirty && !userData.get('password')?.valid" >password should contain atleast 8 letters</span>
+      </div>
+
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me</label>
+      </div>
+      <a ><button type="submit" class="btn btn-primary" [ngClass]="{'disabled' : !userData.valid}" (click)="createUser()" >Submit</button></a>
+    </form>
+  </div>
+</div>

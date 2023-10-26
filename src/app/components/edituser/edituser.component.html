@@ -1,0 +1,31 @@
+<div class="card container mt-5" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">you can edit your username</h5>
+    <form [formGroup]="userData" (ngSubmit)="editUser(userData)" class="container">
+
+      <div class="mb-3">
+        <label for="fullname" class="form-label">username</label>
+        <input type="name" class="form-control" id="fullname" placeholder="edit your username"
+        formControlName="username">
+        <span style="color: red;" *ngIf="userData.get('username')?.dirty && !userData.get('username')?.valid" >username should contain atleast 8 letters</span>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">enter your Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1"
+          placeholder="Password must contain atleast 8 characters" formControlName="password">
+          <span style="color: red;" *ngIf="userData.get('password')?.dirty && !userData.get('password')?.valid" >password should contain atleast 8 letters</span>
+      </div>
+
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Confirm</label>
+      </div>
+      <div *ngIf="!flag">enter correct password</div>
+      <a ><button type="submit" class="btn btn-primary" [ngClass]="{'disabled' : !userData.valid}" (click)="editUser(userData)" *ngIf="!flag">Submit</button></a>
+      <button class="btn btn-success" *ngIf="flag" (click)="gotoprofile() ">confirm again</button>
+    </form>
+
+  </div>
+</div>
